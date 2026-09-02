@@ -12,6 +12,8 @@ export const profile = {
   youtube: "https://youtube.com/@alexrivera",
   tiktok: "https://tiktok.com/@alexrivera",
   twitter: "https://twitter.com/alexrivera",
+  linkedin: "https://linkedin.com/in/alexrivera",
+  imdb: "https://imdb.com/name/alexrivera",
   avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80",
   heroImage: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=80",
   categories: ["Lifestyle", "Travel", "Fashion", "Food", "Fitness", "Adventure"],

@@ -46,8 +46,9 @@ export default function Footer() {
             <div className="flex gap-3 flex-wrap">
               <SocialIcon platform="instagram" href={profile.instagram} />
               <SocialIcon platform="youtube" href={profile.youtube} />
-              <SocialIcon platform="tiktok" href={profile.tiktok} />
               <SocialIcon platform="twitter" href={profile.twitter} />
+              <SocialIcon platform="linkedin" href={profile.linkedin} />
+              <SocialIcon platform="imdb" href={profile.imdb} />
             </div>
             <a
               href={`mailto:${profile.email}`}

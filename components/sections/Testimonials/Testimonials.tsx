@@ -55,7 +55,7 @@ export default function Testimonials() {
                 key={i}
                 onClick={() => go(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-gradient-to-r from-violet-500 to-pink-500" : "w-1.5 bg-white/20"}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-gradient-to-r from-[#C9A84C] to-[#8a6f2e]" : "w-1.5 bg-white/20"}`}
               />
             ))}
           </div>

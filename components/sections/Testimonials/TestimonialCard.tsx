@@ -10,7 +10,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
       {/* Stars */}
       <div className="flex gap-1 mb-6">
         {Array.from({ length: testimonial.stars }).map((_, i) => (
-          <Star key={i} size={14} className="text-violet-400 fill-violet-400" />
+          <Star key={i} size={14} className="text-[#C9A84C] fill-[#C9A84C]" />
         ))}
       </div>
 
