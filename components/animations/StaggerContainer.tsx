@@ -1,5 +1,5 @@
 "use client";
-import { motion, Variants } from "motion/react";
+import { motion, Variants, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 
 interface StaggerContainerProps {
@@ -12,21 +12,24 @@ interface StaggerContainerProps {
 export default function StaggerContainer({
   children,
   className = "",
-  staggerDelay = 0.1,
+  staggerDelay = 0.07,
   delayStart = 0,
 }: StaggerContainerProps) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-60px" }}
       variants={{
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: staggerDelay,
-            delayChildren: delayStart,
+            // 50ms stagger per Emil Kowalski: 30–80ms between items
+            staggerChildren: reduce ? 0 : staggerDelay,
+            delayChildren: reduce ? 0 : delayStart,
           },
         },
       }}
@@ -37,10 +40,11 @@ export default function StaggerContainer({
 }
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
+    // spring for alive feel per Emil Kowalski
+    transition: { type: "spring", duration: 0.5, bounce: 0.15 },
   },
 };

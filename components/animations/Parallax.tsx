@@ -1,5 +1,5 @@
 "use client";
-import { useScroll, useTransform, motion } from "motion/react";
+import { useScroll, useTransform, motion, useReducedMotion } from "motion/react";
 import { useRef, ReactNode } from "react";
 
 interface ParallaxProps {
@@ -10,8 +10,12 @@ interface ParallaxProps {
 
 export default function Parallax({ children, speed = 0.3, className = "" }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [`${speed * -60}px`, `${speed * 60}px`]);
+
+  // Reduced motion: no parallax movement
+  const range = reduce ? 0 : speed * 60;
+  const y = useTransform(scrollYProgress, [0, 1], [`${-range}px`, `${range}px`]);
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>

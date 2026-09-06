@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -25,6 +25,8 @@ export default function Button({
   disabled = false,
   "aria-label": ariaLabel,
 }: ButtonProps) {
+  const reduce = useReducedMotion();
+
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",
     md: "px-6 py-3 text-sm",
@@ -44,8 +46,10 @@ export default function Button({
   const content = (
     <motion.span
       className={base}
-      whileHover={disabled ? {} : { scale: 1.03 }}
-      whileTap={disabled ? {} : { scale: 0.97 }}
+      // Press feedback: scale(0.97) at 160ms ease-out per Emil Kowalski recipe
+      whileHover={disabled || reduce ? {} : { scale: 1.02 }}
+      whileTap={disabled || reduce ? {} : { scale: 0.97 }}
+      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
       onClick={onClick}
       aria-label={ariaLabel}
     >
@@ -62,7 +66,12 @@ export default function Button({
   }
 
   return (
-    <button type={type} disabled={disabled} aria-label={ariaLabel} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] rounded-full">
+    <button
+      type={type}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] rounded-full"
+    >
       {content}
     </button>
   );

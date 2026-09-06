@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { Play, Heart, MessageCircle } from "lucide-react";
 import { reels } from "@/data/reels";
@@ -12,11 +12,14 @@ interface ReelCardProps {
 }
 
 export default function ReelCard({ reel, onClick }: ReelCardProps) {
+  const reduce = useReducedMotion();
+
   return (
     <motion.div
       className="relative w-[160px] sm:w-[200px] md:w-[220px] flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group bg-[#111111] border border-white/[0.06]"
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2 }}
+      // Spring for alive feel — hover lift gated on pointer:fine
+      whileHover={reduce ? {} : { y: -4 }}
+      transition={{ type: "spring", duration: 0.4, bounce: 0.2 }}
       onClick={onClick}
     >
       {/* Thumbnail */}
@@ -25,14 +28,15 @@ export default function ReelCard({ reel, onClick }: ReelCardProps) {
           src={reel.thumbnail}
           alt={reel.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          // Image zoom gated on pointer:fine
+          className="object-cover transition-transform duration-500 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-105"
           sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, 220px"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
         {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-transform duration-150 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-110">
             <Play size={16} className="text-white fill-white ml-0.5" />
           </div>
         </div>
@@ -50,7 +54,7 @@ export default function ReelCard({ reel, onClick }: ReelCardProps) {
         <div className="flex items-center gap-2 sm:gap-3 text-[#A1A1AA] text-xs">
           <span className="flex items-center gap-1"><Play size={10} />{reel.views}</span>
           <span className="flex items-center gap-1"><Heart size={10} />{reel.likes}</span>
-          <span className="flex items-center gap-1 hidden sm:flex"><MessageCircle size={10} />{reel.comments}</span>
+          <span className="hidden sm:flex items-center gap-1"><MessageCircle size={10} />{reel.comments}</span>
         </div>
       </div>
     </motion.div>

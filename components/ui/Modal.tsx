@@ -1,7 +1,10 @@
 "use client";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { X } from "lucide-react";
 import { useEffect, ReactNode } from "react";
+
+// Strong ease-out per Emil Kowalski standards
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,12 +14,10 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children, className = "" }: ModalProps) {
+  const reduce = useReducedMotion();
+
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
@@ -34,7 +35,8 @@ export default function Modal({ isOpen, onClose, children, className = "" }: Mod
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          // Backdrop: 250ms ease-out per modal standard
+          transition={{ duration: 0.25, ease: EASE_OUT }}
         >
           <motion.div
             className="absolute inset-0 bg-black/90 backdrop-blur-sm"
@@ -42,10 +44,11 @@ export default function Modal({ isOpen, onClose, children, className = "" }: Mod
           />
           <motion.div
             className={`relative z-10 ${className}`}
-            initial={{ scale: 0.95, opacity: 0 }}
+            // Modal: scale(0.96) → 1, centered, 250ms per Emil Kowalski modal recipe
+            initial={{ scale: reduce ? 1 : 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+            exit={{ scale: reduce ? 1 : 0.96, opacity: 0 }}
+            transition={{ duration: 0.25, ease: EASE_OUT }}
           >
             <button
               onClick={onClose}
