@@ -15,7 +15,7 @@ export default function StaggerContainer({
   staggerDelay = 0.07,
   delayStart = 0,
 }: StaggerContainerProps) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
 
   return (
     <motion.div

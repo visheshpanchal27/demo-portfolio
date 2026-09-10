@@ -7,8 +7,8 @@ export default function Brands() {
       <div className="max-w-7xl mx-auto px-6 mb-12">
         <SectionHeading
           label="Collaborations"
-          title="Trusted By Brands"
-          subtitle="Partnering with brands that value authentic storytelling and real audience connection."
+          title="Selected Collaboration"
+          subtitle="A verified brand partnership. Further work samples are available through Instagram or on request."
         />
       </div>
       <BrandMarquee />

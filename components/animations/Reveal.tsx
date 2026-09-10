@@ -12,7 +12,7 @@ interface RevealProps {
 }
 
 export default function Reveal({ children, delay = 0, className = "" }: RevealProps) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
 
   if (reduce) {
     return (

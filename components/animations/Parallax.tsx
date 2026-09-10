@@ -10,7 +10,7 @@ interface ParallaxProps {
 
 export default function Parallax({ children, speed = 0.3, className = "" }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   // Reduced motion: no parallax movement

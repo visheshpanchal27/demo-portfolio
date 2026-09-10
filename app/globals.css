@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Space Grotesk", "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", system-ui, sans-serif;
   --color-background: #080808;
-  --color-card: #111111;
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-card: #0f0f0f;
+  --color-border: rgba(255, 255, 255, 0.07);
 }
 
 :root {
@@ -13,6 +13,7 @@
   --foreground: #ffffff;
   --accent: #C9A84C;
   --accent-dim: #a8893d;
+  --accent-hot: #E85D26;
 }
 
 *, *::before, *::after {
@@ -25,10 +26,14 @@ html {
   text-size-adjust: 100%;
 }
 
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "DM Sans", "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -44,44 +49,44 @@ a, button {
 button, a, [role="button"] {
   min-height: 44px;
   min-width: 44px;
+  cursor: pointer;
 }
 
 /* Custom scrollbar — desktop only */
 @media (pointer: fine) {
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #111111;
-  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0f0f0f; }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #C9A84C, #8a6f2e);
+    background: linear-gradient(to bottom, #E85D26, #C9A84C);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #e0bc5a, #a8893d);
+    background: linear-gradient(to bottom, #ff6b35, #e0bc5a);
   }
 }
 
 /* Hide scrollbar for horizontal scroll */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid #C9A84C;
+  outline: 2px solid #E85D26;
   outline-offset: 2px;
 }
 
 /* Images */
-img {
-  max-width: 100%;
-  height: auto;
+img { max-width: 100%; height: auto; }
+
+/* Artist stage lines — subtle diagonal texture */
+.stage-texture {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.012) 40px,
+    rgba(255, 255, 255, 0.012) 41px
+  );
 }
 
 /* Reduced motion */

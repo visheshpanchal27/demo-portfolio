@@ -7,23 +7,23 @@ import { motion } from "motion/react";
 const cards = [
   {
     icon: Users,
-    title: "Authentic Audience",
-    description: "A deeply engaged community built on trust, consistency, and genuine connection — not inflated numbers.",
-  },
-  {
-    icon: ImageIcon,
-    title: "High-Quality Visuals",
-    description: "Professional photography and short-form video that meets premium brand standards every time.",
+    title: "Genuine Community",
+    description: "A 112.6K-strong Instagram audience built around recurring characters, stories and everyday moments.",
   },
   {
     icon: Sparkles,
-    title: "Brand Storytelling",
-    description: "Products integrated naturally into creator content so they feel earned, not forced.",
+    title: "Character-Driven Content",
+    description: "The PASAKAKA identity brings personality and entertainment to brand content that audiences actually enjoy.",
+  },
+  {
+    icon: ImageIcon,
+    title: "Creative Brand Integration",
+    description: "Products woven naturally into entertaining stories — so your brand feels earned, not forced.",
   },
   {
     icon: Globe,
-    title: "Multi-Platform Reach",
-    description: "Instagram-first campaigns with cross-platform distribution potential across YouTube, TikTok, and more.",
+    title: "Multi-Platform Presence",
+    description: "Instagram-first with active YouTube presence — reaching audiences across platforms with consistent creative energy.",
   },
 ];
 

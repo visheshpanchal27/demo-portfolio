@@ -25,7 +25,7 @@ export default function Button({
   disabled = false,
   "aria-label": ariaLabel,
 }: ButtonProps) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",
@@ -35,7 +35,7 @@ export default function Button({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-[#C9A84C] to-[#8a6f2e] text-black font-semibold shadow-lg shadow-[#C9A84C]/20 hover:shadow-[#C9A84C]/40",
+      "bg-gradient-to-r from-[#E85D26] to-[#C9A84C] text-black font-semibold shadow-lg shadow-[#E85D26]/20 hover:shadow-[#E85D26]/40",
     outline:
       "border border-white/20 text-white hover:border-[#C9A84C]/50 hover:bg-[#C9A84C]/5",
     ghost: "text-white/70 hover:text-white hover:bg-white/5",

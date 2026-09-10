@@ -1,3 +1,4 @@
+"use client";
 import FadeIn from "@/components/animations/FadeIn";
 
 interface SectionHeadingProps {
@@ -21,7 +22,7 @@ export default function SectionHeading({
     <div className={`flex flex-col gap-3 ${alignClass} ${className}`}>
       {label && (
         <FadeIn>
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#C9A84C]">
+          <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#E85D26]">
             {label}
           </span>
         </FadeIn>
@@ -39,7 +40,7 @@ export default function SectionHeading({
         </FadeIn>
       )}
       <FadeIn delay={0.25}>
-        <div className="h-px w-12 bg-gradient-to-r from-[#C9A84C] to-[#8a6f2e] mt-1" />
+        <div className="h-px w-12 bg-gradient-to-r from-[#E85D26] to-[#C9A84C] mt-1" />
       </FadeIn>
     </div>
   );

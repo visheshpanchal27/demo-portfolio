@@ -8,9 +8,8 @@ import Button from "@/components/ui/Button";
 const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
-  { label: "Work", href: "#gallery" },
-  { label: "Reels", href: "#reels" },
-  { label: "Collabs", href: "#brands" },
+  { label: "Work", href: "#campaigns" },
+  { label: "Collaborations", href: "#brands" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -42,7 +41,7 @@ export default function Navbar() {
     <>
       {/* Scroll progress bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C9A84C] to-[#8a6f2e] z-[60] origin-left"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#E85D26] to-[#C9A84C] z-[60] origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -73,7 +72,7 @@ export default function Navbar() {
                   className="text-sm text-[#A1A1AA] hover:text-white transition-colors duration-200 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] rounded py-1"
                 >
                   {link.label}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-[#C9A84C] to-[#8a6f2e] group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-[#E85D26] to-[#C9A84C] group-hover:w-full transition-all duration-300" />
                 </button>
               </li>
             ))}

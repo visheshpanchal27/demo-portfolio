@@ -43,7 +43,7 @@ export default function About() {
             <div className="relative">
               <div className="absolute -left-4 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A84C]/0 via-[#C9A84C]/40 to-[#C9A84C]/0" />
               <p className="font-serif text-2xl sm:text-3xl md:text-4xl text-white leading-tight pl-6 sm:pl-8">
-                &ldquo;Stories that
+                &ldquo;Entertainment that
                 <br />
                 <span className="bg-gradient-to-r from-[#C9A84C] to-[#e8d5a3] bg-clip-text text-transparent">
                   people remember.

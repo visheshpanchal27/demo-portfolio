@@ -1,12 +1,12 @@
 "use client";
-import { Users, Camera, TrendingUp, Globe, Briefcase } from "lucide-react";
+import { Users, Camera, TrendingUp, Globe, Briefcase, Video } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import StaggerContainer, { staggerItem } from "@/components/animations/StaggerContainer";
 import { motion } from "motion/react";
 import { profile } from "@/data/profile";
 
 const iconMap: Record<string, React.ElementType> = {
-  Users, Camera, TrendingUp, Globe, Briefcase,
+  Users, Camera, TrendingUp, Globe, Briefcase, Video,
 };
 
 export default function Stats() {
@@ -14,6 +14,7 @@ export default function Stats() {
     <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
       {profile.stats.map((stat) => {
         const Icon = iconMap[stat.icon];
+        const isText = isNaN(stat.value as number) || stat.display === "Active";
         return (
           <motion.div
             key={stat.label}
@@ -24,11 +25,15 @@ export default function Stats() {
               {Icon && <Icon size={14} className="text-[#C9A84C]" />}
             </div>
             <p className="text-xl sm:text-2xl font-semibold text-white">
-              <AnimatedCounter
-                value={stat.value}
-                display={stat.display}
-                suffix={stat.suffix}
-              />
+              {isText ? (
+                <span>{stat.display}{stat.suffix}</span>
+              ) : (
+                <AnimatedCounter
+                  value={stat.value}
+                  display={stat.display}
+                  suffix={stat.suffix}
+                />
+              )}
             </p>
             <p className="text-[#71717A] text-xs">{stat.label}</p>
           </motion.div>

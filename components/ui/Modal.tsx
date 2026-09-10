@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { X } from "lucide-react";
-import { useEffect, ReactNode } from "react";
+import { useEffect, ReactNode, useRef } from "react";
 
 // Strong ease-out per Emil Kowalski standards
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
@@ -14,10 +14,12 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children, className = "" }: ModalProps) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
+    if (isOpen) closeButtonRef.current?.focus();
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
@@ -44,6 +46,9 @@ export default function Modal({ isOpen, onClose, children, className = "" }: Mod
           />
           <motion.div
             className={`relative z-10 ${className}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Reel details"
             // Modal: scale(0.96) → 1, centered, 250ms per Emil Kowalski modal recipe
             initial={{ scale: reduce ? 1 : 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -51,6 +56,7 @@ export default function Modal({ isOpen, onClose, children, className = "" }: Mod
             transition={{ duration: 0.25, ease: EASE_OUT }}
           >
             <button
+              ref={closeButtonRef}
               onClick={onClose}
               aria-label="Close modal"
               className="absolute -top-4 -right-4 z-20 w-9 h-9 rounded-full bg-[#151515] border border-white/10 flex items-center justify-center text-[#A1A1AA] hover:text-white transition-colors"

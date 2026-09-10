@@ -10,6 +10,9 @@ export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
 
+  // Hide section if no testimonials yet
+  if (testimonials.length === 0) return null;
+
   const go = (next: number) => {
     setDir(next > index ? 1 : -1);
     setIndex(next);

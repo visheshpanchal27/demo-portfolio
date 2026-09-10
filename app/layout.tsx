@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/profile";
-const playfair = Playfair_Display({
+
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-space",
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm",
   display: "swap",
 });
 
@@ -31,15 +33,12 @@ export const metadata: Metadata = {
     description: profile.seo.description,
     url: profile.seo.url,
     siteName: profile.name,
-    images: [{ url: profile.seo.ogImage, width: 1200, height: 630, alt: profile.name }],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    site: profile.seo.twitterHandle,
+    card: "summary",
     title: profile.seo.title,
     description: profile.seo.description,
-    images: [profile.seo.ogImage],
   },
   robots: { index: true, follow: true },
 };
@@ -51,18 +50,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: profile.name,
     jobTitle: "Content Creator",
     url: profile.seo.url,
-    sameAs: [profile.instagram, profile.youtube, profile.tiktok, profile.twitter],
+    sameAs: [profile.instagram, profile.youtube],
   };
 
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans bg-[#080808] text-white antialiased">
+      <body className="bg-[#080808] text-white antialiased" style={{ fontFamily: "var(--font-dm), DM Sans, system-ui, sans-serif" }}>
         {children}
       </body>
     </html>

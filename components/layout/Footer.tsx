@@ -5,9 +5,8 @@ import SocialIcon from "@/components/ui/SocialIcon";
 
 const footerLinks = [
   { label: "About", href: "#about" },
-  { label: "Work", href: "#gallery" },
-  { label: "Reels", href: "#reels" },
-  { label: "Collabs", href: "#brands" },
+  { label: "Work", href: "#campaigns" },
+  { label: "Collaborations", href: "#brands" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -46,9 +45,6 @@ export default function Footer() {
             <div className="flex gap-3 flex-wrap">
               <SocialIcon platform="instagram" href={profile.instagram} />
               <SocialIcon platform="youtube" href={profile.youtube} />
-              <SocialIcon platform="twitter" href={profile.twitter} />
-              <SocialIcon platform="linkedin" href={profile.linkedin} />
-              <SocialIcon platform="imdb" href={profile.imdb} />
             </div>
             <a
               href={`mailto:${profile.email}`}
