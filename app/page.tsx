@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero/Hero";
 import About from "@/components/sections/About/About";
 import WhyBrands from "@/components/sections/WhyBrands/WhyBrands";
+import ScrollTabs from "@/components/sections/ScrollTabs/ScrollTabs";
 import Campaigns from "@/components/sections/Campaigns/Campaigns";
 import Brands from "@/components/sections/Brands/Brands";
 import Testimonials from "@/components/sections/Testimonials/Testimonials";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <About />
         <WhyBrands />
+        <ScrollTabs />
         <Campaigns />
         <Brands />
         <Testimonials />

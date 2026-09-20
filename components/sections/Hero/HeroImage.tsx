@@ -1,12 +1,10 @@
 "use client";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { profile } from "@/data/profile";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 export default function HeroImage() {
-  const reduce = useReducedMotion() ?? false;
-
   return (
     <div className="relative inline-flex justify-center">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -16,14 +14,14 @@ export default function HeroImage() {
             background: "conic-gradient(from 0deg, #E85D26, #C9A84C, #3a2e10, #E85D26)",
             filter: "blur(2px)",
           }}
-          animate={reduce ? {} : { rotate: 360 }}
+          animate={{ rotate: 360 }}
           transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
       <motion.div
         className="relative z-10 w-[240px] h-[300px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[430px] lg:w-[380px] lg:h-[480px] rounded-2xl overflow-hidden border border-white/10"
-        initial={{ opacity: 0, scale: reduce ? 1 : 1.05 }}
+        initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.5, ease: EASE_OUT }}
         aria-label={`${profile.name} creator identity`}
@@ -49,10 +47,10 @@ export default function HeroImage() {
             className="absolute z-20 bg-[#111111]/90 backdrop-blur-md border border-white/10 rounded-xl px-3 py-2 sm:px-4 sm:py-3 hidden sm:block min-w-[110px]"
             style={pos}
             initial={{ opacity: 0 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -6, 0] }}
+            animate={{ opacity: 1, y: [0, -6, 0] }}
             transition={{
               opacity: { duration: 0.4, delay: 1.2 + i * 0.15, ease: EASE_OUT },
-              y: { duration: reduce ? 0 : 3 + i, repeat: reduce ? 0 : Infinity, ease: "easeInOut", delay: i * 0.5 },
+              y: { duration: 3 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 },
             }}
           >
             <p className="text-[#C9A84C] font-semibold text-xs sm:text-sm tabular-nums">{stat.value}</p>

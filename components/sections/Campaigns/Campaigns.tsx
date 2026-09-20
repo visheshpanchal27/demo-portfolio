@@ -1,3 +1,4 @@
+"use client";
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StaggerContainer, { staggerItem } from "@/components/animations/StaggerContainer";
