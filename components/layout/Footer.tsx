@@ -44,7 +44,6 @@ export default function Footer() {
             <span className="text-xs font-medium tracking-[0.15em] uppercase text-[#71717A]">Follow</span>
             <div className="flex gap-3 flex-wrap">
               <SocialIcon platform="instagram" href={profile.instagram} />
-              <SocialIcon platform="youtube" href={profile.youtube} />
             </div>
             <a
               href={`mailto:${profile.email}`}

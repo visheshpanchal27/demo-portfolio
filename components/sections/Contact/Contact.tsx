@@ -1,4 +1,4 @@
-import { Instagram, Mail, Youtube } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/animations/FadeIn";
 import ContactForm from "./ContactForm";
@@ -6,7 +6,6 @@ import { profile } from "@/data/profile";
 
 const quickContacts = [
   { icon: Instagram, label: "Instagram", value: profile.handle, href: profile.instagram },
-  { icon: Youtube, label: "YouTube", value: "Watch on YouTube", href: profile.youtube },
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
 ];
 

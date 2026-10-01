@@ -22,8 +22,8 @@ const cards = [
   },
   {
     icon: Globe,
-    title: "Instagram + YouTube",
-    description: "Short-form reels on Instagram, longer content on YouTube. One creator, two platforms, one consistent voice.",
+    title: "Instagram First",
+    description: "121K followers on Instagram. That's where the audience lives and where the content performs.",
   },
 ];
 
