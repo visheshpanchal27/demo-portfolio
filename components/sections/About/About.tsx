@@ -1,60 +1,69 @@
-import SectionHeading from "@/components/ui/SectionHeading";
-import Badge from "@/components/ui/Badge";
+import Image from "next/image";
 import FadeIn from "@/components/animations/FadeIn";
-import Stats from "./Stats";
 import { profile } from "@/data/profile";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 bg-[#0D0D0D]">
+    <section id="about" className="py-14 sm:py-20 md:py-24 bg-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-14 sm:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
+
+          {/* Photo — smaller on mobile */}
+          <FadeIn direction="left">
+            <div className="relative aspect-[3/4] max-h-[500px] sm:max-h-none rounded-2xl overflow-hidden border border-[#292929]">
+              <Image src={profile.aboutImage} alt={`${profile.name} — About`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/40 to-transparent" />
+            </div>
+          </FadeIn>
+
           {/* Text */}
-          <div className="flex flex-col gap-5 sm:gap-6">
-            <SectionHeading
-              label="About"
-              title="Krunal Suthar is PASAKAKA."
-              align="left"
-            />
-            <FadeIn delay={0.3} direction="left">
-              <p className="text-[#A1A1AA] text-sm sm:text-base leading-relaxed">{profile.bio}</p>
+          <div className="flex flex-col gap-5 sm:gap-7">
+            <FadeIn delay={0.1} direction="right">
+              <p className="section-label">About Krunal</p>
             </FadeIn>
-            <FadeIn delay={0.4} direction="left">
-              <div className="flex flex-wrap gap-2 mt-1">
-                {profile.categories.map((cat) => (
-                  <Badge key={cat}>{cat}</Badge>
+            <FadeIn delay={0.2} direction="right">
+              <h2 className="font-heading text-[#F5F5F0]"
+                style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 500, lineHeight: 0.95 }}>
+                More Than<br /><em className="text-[#C6A15B]">Just Content</em>
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.3} direction="right">
+              <p className="text-[#A3A3A3] text-sm sm:text-base lg:text-lg leading-relaxed">{profile.bio}</p>
+            </FadeIn>
+            <FadeIn delay={0.4} direction="right">
+              <p className="text-[#A3A3A3] text-sm sm:text-base leading-relaxed">
+                From comedy skits to brand campaigns — the PASAKAKA identity is built on genuine connection with a real audience. Every piece of content is crafted to entertain first, promote second.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.5} direction="right">
+              <div className="flex flex-wrap gap-2 sm:gap-3 pt-1">
+                {["Artist", "Comedy Creator", "Digital Creator", "Brand Collaborator"].map((tag) => (
+                  <span key={tag} className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#292929] bg-[#181818] text-[#A3A3A3] text-xs sm:text-sm font-medium">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </FadeIn>
-            <FadeIn delay={0.5} direction="left">
-              <div className="flex flex-col gap-2 mt-1">
-                <p className="text-xs font-medium tracking-[0.15em] uppercase text-[#71717A]">Available for</p>
-                <div className="flex flex-wrap gap-2">
-                  {profile.availability.map((item) => (
-                    <Badge key={item} variant="active">{item}</Badge>
-                  ))}
+            <FadeIn delay={0.6} direction="right">
+              <div className="flex items-center gap-4 sm:gap-6 pt-3 border-t border-[#292929] flex-wrap">
+                <div>
+                  <p className="text-[#F5F5F0] font-semibold text-xl sm:text-2xl tabular-nums">121K+</p>
+                  <p className="text-[#A3A3A3] text-xs mt-0.5">Instagram Followers</p>
+                </div>
+                <div className="w-px h-8 sm:h-10 bg-[#292929]" />
+                <div>
+                  <p className="text-[#F5F5F0] font-semibold text-xl sm:text-2xl">Verified</p>
+                  <p className="text-[#A3A3A3] text-xs mt-0.5">Instagram Account</p>
+                </div>
+                <div className="w-px h-8 sm:h-10 bg-[#292929]" />
+                <div>
+                  <p className="text-[#F5F5F0] font-semibold text-xl sm:text-2xl">Ahmedabad</p>
+                  <p className="text-[#A3A3A3] text-xs mt-0.5">Based In</p>
                 </div>
               </div>
             </FadeIn>
           </div>
-
-          {/* Editorial statement */}
-          <FadeIn delay={0.2} direction="right">
-            <div className="relative">
-              <div className="absolute -left-4 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A84C]/0 via-[#C9A84C]/40 to-[#C9A84C]/0" />
-              <p className="font-serif text-2xl sm:text-3xl md:text-4xl text-white leading-tight pl-6 sm:pl-8">
-                &ldquo;Entertainment that
-                <br />
-                <span className="bg-gradient-to-r from-[#C9A84C] to-[#e8d5a3] bg-clip-text text-transparent">
-                  people remember.
-                </span>
-                &rdquo;
-              </p>
-            </div>
-          </FadeIn>
         </div>
-
-        <Stats />
       </div>
     </section>
   );

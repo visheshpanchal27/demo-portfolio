@@ -5,15 +5,11 @@ interface BadgeProps {
 }
 
 export default function Badge({ children, variant = "default", className = "" }: BadgeProps) {
-  const variantClass =
-    variant === "active"
-      ? "bg-[#C9A84C]/10 border-[#C9A84C]/30 text-[#C9A84C]"
-      : "bg-white/5 border-white/10 text-[#A1A1AA] hover:border-white/20 hover:text-white";
-
+  const variantClass = variant === "active"
+    ? "bg-[#C6A15B]/10 border-[#C6A15B]/30 text-[#C6A15B]"
+    : "bg-[#181818] border-[#292929] text-[#A3A3A3] hover:border-[#C6A15B]/30 hover:text-[#F5F5F0]";
   return (
-    <span
-      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border transition-all duration-200 ${variantClass} ${className}`}
-    >
+    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border transition-all duration-200 ${variantClass} ${className}`}>
       {children}
     </span>
   );

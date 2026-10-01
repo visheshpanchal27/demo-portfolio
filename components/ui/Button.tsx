@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -15,30 +15,16 @@ interface ButtonProps {
 }
 
 export default function Button({
-  children,
-  variant = "primary",
-  size = "md",
-  onClick,
-  href,
-  className = "",
-  type = "button",
-  disabled = false,
-  "aria-label": ariaLabel,
+  children, variant = "primary", size = "md",
+  onClick, href, className = "", type = "button",
+  disabled = false, "aria-label": ariaLabel,
 }: ButtonProps) {
-  const reduce = useReducedMotion() ?? false;
-
-  const sizeClasses = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-sm",
-    lg: "px-8 py-4 text-base",
-  };
+  const sizeClasses = { sm: "px-4 py-2 text-sm", md: "px-6 py-3 text-sm", lg: "px-8 py-4 text-base" };
 
   const variantClasses = {
-    primary:
-      "bg-gradient-to-r from-[#E85D26] to-[#C9A84C] text-black font-semibold shadow-lg shadow-[#E85D26]/20 hover:shadow-[#E85D26]/40",
-    outline:
-      "border border-white/20 text-white hover:border-[#C9A84C]/50 hover:bg-[#C9A84C]/5",
-    ghost: "text-white/70 hover:text-white hover:bg-white/5",
+    primary: "bg-[#C6A15B] hover:bg-[#D8B875] text-black font-semibold shadow-lg shadow-[#C6A15B]/20",
+    outline: "border border-[#292929] text-[#F5F5F0] hover:border-[#C6A15B] hover:bg-[#C6A15B]/5",
+    ghost: "text-[#A3A3A3] hover:text-[#F5F5F0] hover:bg-white/5",
   };
 
   const base = `inline-flex items-center gap-2 rounded-full font-medium transition-all duration-200 cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
@@ -46,9 +32,8 @@ export default function Button({
   const content = (
     <motion.span
       className={base}
-      // Press feedback: scale(0.97) at 160ms ease-out per Emil Kowalski recipe
-      whileHover={disabled || reduce ? {} : { scale: 1.02 }}
-      whileTap={disabled || reduce ? {} : { scale: 0.97 }}
+      whileHover={disabled ? {} : { scale: 1.02 }}
+      whileTap={disabled ? {} : { scale: 0.97 }}
       transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
       onClick={onClick}
       aria-label={ariaLabel}
@@ -57,21 +42,10 @@ export default function Button({
     </motion.span>
   );
 
-  if (href) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>
-        {content}
-      </a>
-    );
-  }
+  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>{content}</a>;
 
   return (
-    <button
-      type={type}
-      disabled={disabled}
-      aria-label={ariaLabel}
-      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] rounded-full"
-    >
+    <button type={type} disabled={disabled} aria-label={ariaLabel} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A15B] rounded-full">
       {content}
     </button>
   );

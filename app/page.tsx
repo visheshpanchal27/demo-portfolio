@@ -1,15 +1,11 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero/Hero";
+import InstagramReels from "@/components/sections/Reels/FeaturedReels";
 import About from "@/components/sections/About/About";
-import WhyBrands from "@/components/sections/WhyBrands/WhyBrands";
-import ScrollTabs from "@/components/sections/ScrollTabs/ScrollTabs";
-import Campaigns from "@/components/sections/Campaigns/Campaigns";
-import Brands from "@/components/sections/Brands/Brands";
-import Testimonials from "@/components/sections/Testimonials/Testimonials";
-import Services from "@/components/sections/Services/Services";
-import InstagramCTA from "@/components/sections/InstagramCTA/InstagramCTA";
-import CollabCTA from "@/components/sections/CollabCTA/CollabCTA";
+import OnScreen from "@/components/sections/OnScreen/OnScreen";
+import Collaborations from "@/components/sections/Collaborations/Collaborations";
+import Gallery from "@/components/sections/Gallery/Gallery";
 import Contact from "@/components/sections/Contact/Contact";
 
 export default function Home() {
@@ -18,15 +14,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <InstagramReels />
         <About />
-        <WhyBrands />
-        <ScrollTabs />
-        <Campaigns />
-        <Brands />
-        <Testimonials />
-        <Services />
-        <InstagramCTA />
-        <CollabCTA />
+        <OnScreen />
+        <Collaborations />
+        <Gallery />
         <Contact />
       </main>
       <Footer />
