@@ -1,5 +1,5 @@
 "use client";
-import { motion, MotionValue, useTransform, useMotionTemplate } from "motion/react";
+import { motion, MotionValue, useTransform } from "motion/react";
 import Image from "next/image";
 import { scrollTabsData } from "./ScrollTabs";
 
@@ -24,7 +24,7 @@ function PanelImage({
   const segMid = (index + 0.5) / total;
   const segEnd = (index + 1) / total;
 
-  // First panel starts fully visible
+  // First panel starts fully visible, others slide up from bottom
   const clipBottom = useTransform(
     scrollYProgress,
     index === 0 ? [0, segMid] : [segStart, segMid],
@@ -32,7 +32,7 @@ function PanelImage({
     { clamp: true }
   );
 
-  // Last panel never slides out
+  // Slide out upward — last panel never slides out
   const clipTop = useTransform(
     scrollYProgress,
     index === total - 1 ? [segMid, 1] : [segMid, segEnd],
@@ -40,9 +40,13 @@ function PanelImage({
     { clamp: true }
   );
 
-  // Use useMotionTemplate instead of array transform — esbuild safe
-  const clipPath = useMotionTemplate`inset(${clipTop} 0% ${clipBottom} 0% round 16px)`;
+  const clipPath = useTransform(
+    [clipBottom, clipTop] as MotionValue[],
+    ([bottom, top]: string[]) =>
+      `inset(${top} 0% ${bottom} 0% round 16px)`
+  );
 
+  // Scale for depth feel
   const scale = useTransform(
     scrollYProgress,
     [segStart, segMid, segEnd],
@@ -63,8 +67,10 @@ function PanelImage({
         />
       </motion.div>
 
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
+      {/* Bottom info */}
       <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-xs font-semibold text-white">
           <span className="w-1.5 h-1.5 rounded-full bg-[#E85D26] animate-pulse" />

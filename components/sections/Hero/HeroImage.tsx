@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { profile } from "@/data/profile";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
@@ -7,6 +8,7 @@ const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 export default function HeroImage() {
   return (
     <div className="relative inline-flex justify-center">
+      {/* Glow ring */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] rounded-full"
@@ -19,28 +21,31 @@ export default function HeroImage() {
         />
       </div>
 
+      {/* Real photo */}
       <motion.div
         className="relative z-10 w-[240px] h-[300px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[430px] lg:w-[380px] lg:h-[480px] rounded-2xl overflow-hidden border border-white/10"
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.5, ease: EASE_OUT }}
-        aria-label={`${profile.name} creator identity`}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_25%,rgba(232,93,38,0.34),transparent_38%),linear-gradient(145deg,#17120c_0%,#0d0d0d_54%,#1f120d_100%)]" />
-        <div className="absolute inset-0 stage-texture opacity-60" />
-        <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-          <span className="font-serif text-6xl sm:text-7xl md:text-8xl font-bold tracking-[-0.08em] text-white">{profile.monogram}</span>
-          <span className="mt-4 text-[10px] sm:text-xs font-bold tracking-[0.35em] uppercase text-[#C9A84C]">{profile.identity}</span>
-        </div>
+        <Image
+          src={profile.heroImage}
+          alt={profile.name}
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, (max-width: 1024px) 340px, 380px"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/50 via-transparent to-transparent" />
       </motion.div>
 
+      {/* Floating stat cards */}
       {profile.floatingStats.map((stat, i) => {
         const positions = [
           { top: "6%", right: "-14%", left: "auto" },
           { top: "44%", left: "-14%", right: "auto" },
         ];
         const pos = positions[i];
-
         return (
           <motion.div
             key={stat.label}

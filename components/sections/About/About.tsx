@@ -13,7 +13,7 @@ export default function About() {
           <div className="flex flex-col gap-5 sm:gap-6">
             <SectionHeading
               label="About"
-              title="More Than Content. A Personal Brand."
+              title="Krunal Suthar is PASAKAKA."
               align="left"
             />
             <FadeIn delay={0.3} direction="left">

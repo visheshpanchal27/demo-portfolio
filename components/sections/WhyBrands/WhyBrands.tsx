@@ -7,23 +7,23 @@ import { motion } from "motion/react";
 const cards = [
   {
     icon: Users,
-    title: "Genuine Community",
-    description: "A 112.6K-strong Instagram audience built around recurring characters, stories and everyday moments.",
+    title: "121K Real Followers",
+    description: "Built through comedy and characters — not paid growth. The audience shows up because they actually like the content.",
   },
   {
     icon: Sparkles,
-    title: "Character-Driven Content",
-    description: "The PASAKAKA identity brings personality and entertainment to brand content that audiences actually enjoy.",
+    title: "PASAKAKA Works",
+    description: "The Tata Punch reel hit 169.6K views. When a brand fits the story, the audience responds.",
   },
   {
     icon: ImageIcon,
-    title: "Creative Brand Integration",
-    description: "Products woven naturally into entertaining stories — so your brand feels earned, not forced.",
+    title: "No Forced Ads",
+    description: "Products go inside the content, not on top of it. Viewers watch till the end because it doesn't feel like an ad.",
   },
   {
     icon: Globe,
-    title: "Multi-Platform Presence",
-    description: "Instagram-first with active YouTube presence — reaching audiences across platforms with consistent creative energy.",
+    title: "Instagram + YouTube",
+    description: "Short-form reels on Instagram, longer content on YouTube. One creator, two platforms, one consistent voice.",
   },
 ];
 
@@ -33,8 +33,8 @@ export default function WhyBrands() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <SectionHeading
           label="Why Brands Work With Me"
-          title="The Creator Advantage"
-          subtitle="What makes the difference between content that performs and content that converts."
+          title="Why it works."
+          subtitle="Real numbers. Real content. Real audience."
           className="mb-12 sm:mb-16"
         />
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
