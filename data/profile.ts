@@ -11,7 +11,7 @@ export const profile = {
   location: "Ahmedabad, India",
   email: "business@krunalsuthar.com",
   instagram: "https://instagram.com/suthar_krunal_",
-  imdb: "https://www.imdb.com/name/suthar_krunal",
+  imdb: "https://www.imdb.com/name/nm13081623/",
   avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
   heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80",
   aboutImage: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=900&q=80",
