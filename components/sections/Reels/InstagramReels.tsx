@@ -261,10 +261,10 @@ function Card({
   cardHeight: number;
   isPlaying: boolean;
 }) {
-  const x = useMotionValue(0);
-  const scale = useMotionValue(1);
-  const opacity = useMotionValue(1);
-  const zIndex = useMotionValue(10);
+  const x = useMotionValue(index * step);
+  const scale = useMotionValue(index === 0 ? 1 : Math.max(0.7, 1 - index * 0.15));
+  const opacity = useMotionValue(index === 0 ? 1 : Math.max(0.3, 1 - index * 0.4));
+  const zIndex = useMotionValue(index === 0 ? 10 : Math.round(10 - index * 3));
 
   useMotionValueEvent(trackPosition, "change", (track) => {
     const trackMod = ((track % total) + total) % total;
