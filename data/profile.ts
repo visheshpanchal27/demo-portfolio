@@ -21,6 +21,12 @@ export const profile = {
     { value: "121K+", label: "Instagram Followers" },
     { value: "169.6K", label: "Brand Collab Views" },
   ],
+  stats: [
+    { icon: "Users", value: 121000, display: "121K", suffix: "+", label: "Instagram Followers" },
+    { icon: "Video", value: 50, display: "50", suffix: "+", label: "Reels Created" },
+    { icon: "Briefcase", value: 10, display: "10", suffix: "+", label: "Brand Collabs" },
+    { icon: "TrendingUp", value: 169600, display: "169.6K", suffix: "", label: "Top Reel Views" },
+  ],
   seo: {
     title: "Krunal Suthar | PASAKAKA · Artist · Digital Creator",
     description: "Krunal Suthar (PASAKAKA) — comedy creator and artist from Ahmedabad with 121K Instagram followers. Available for brand campaigns, acting projects and creative collaborations.",
